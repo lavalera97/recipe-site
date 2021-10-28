@@ -5,6 +5,11 @@ body {
     color: #6D6D5C
 }
 
+a:visited, a:active {
+       color: #343434;
+       text-decoration: none;
+}
+
 
 h1,
 h2,
@@ -12,8 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+    font-family: 'Crete Round', serif;
 }
 
 .navbar-brand {
@@ -259,18 +263,20 @@ a.effect-shine:hover * {
     }
 }
 
-
-.category-link:visited, .category-link:active {
-       color: #5E5E5E;
-       text-decoration: none;
- }
-
-.category-link:hover {
-       color: #3B3B3B;
-       text-decoration: none;
+.category-link:hover, .recipe-author:hover {
+       color: #0D0D0D;
 }
 
+.recipe-author {
+    padding-left: 10px;
+    text-underline-position: under;
+    text-underline-color: #747474
+}
 
+.recipe-card{
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
 
 
 .github-link:hover {

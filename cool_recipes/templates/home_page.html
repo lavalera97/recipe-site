@@ -36,6 +36,32 @@
         </div>
     </div>
 </section>
+
+<section style="padding-top: 35px; padding-bottom: 25px;">
+    <div class="container">
+        <h2 style="color: #494949; font-family: 'Lobster', cursive; letter-spacing:4px;">Рецепты</h2>
+
+  <div class="row">
+      {% for i in categories %}
+      <div class="col-lg-3 col-md-6 col-sm-12 recipe-card">
+          <div class="card" style="padding-left:0; padding-right: 0">
+              <img src="{% static 'images/feta-cheese-2000x1200.jpg' %}" class="card-img-top" height="200" width="150">
+            <div class="card-body" style="text-align: left">
+                <h5 style="color: #121212">Card title</h5>
+                <p style="font-size: 16px; color: #494949">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <span>От</span><a class="recipe-author" href="#"><strong>Админ</strong></a>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+
+
+
+  </div>
+    </div>
+</section>
+
+
 {% endblock %}
 {% block extrajs %}
 <!-- Скрипт для работы карусели -->
