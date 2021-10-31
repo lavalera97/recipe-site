@@ -2,10 +2,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: 500;
-    color: #6D6D5C
+    color: #4A4A44
 }
 
-a:visited, a:active {
+a:visited, a:active, a:hover, a:link {
        color: #343434;
        text-decoration: none;
 }
@@ -112,6 +112,11 @@ a.effect-shine:hover * {
       opacity: 1;
 }
 
+.profile-choice:focus, .profile-choice:active  {
+    background-color: #E9E9E9;
+    color: #1D1D1D;
+    text-decoration: none;
+}
 
 .nav-mob, .search-mob {
     display: none;
@@ -193,6 +198,85 @@ a.effect-shine:hover * {
 }
 
 
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.modal-header {
+    padding: 10px 30px;
+}
+
+.header-search {
+    padding-top: 10px;
+}
+
+.modal-body {
+    padding-top: 30px;
+}
+
+.search-modal-element {
+    padding-bottom: 25px;
+    margin: 0 20%;
+    text-align: left;
+}
+
+.header-search, .search-modal-element {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #483D3D;
+}
+
+/* The Close Button */
+.close {
+  color: #8E7B7B;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #716060;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .MultiCarousel {
     float: left;
     overflow: hidden;
@@ -263,20 +347,271 @@ a.effect-shine:hover * {
     }
 }
 
-.category-link:hover, .recipe-author:hover {
+.category-link:hover {
        color: #0D0D0D;
 }
 
 .recipe-author {
-    padding-left: 10px;
+    padding-left: 6px;
     text-underline-position: under;
     text-underline-color: #747474
 }
 
-.recipe-card{
+
+
+.recipe-card {
     padding-top: 30px;
     padding-bottom: 40px;
 }
+
+
+.card-recipe-name:hover, .recipe-author:hover {
+    color: #0D0D0D;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-underline-color: #747474
+}
+
+
+
+.recipe-roadmap {
+    text-align: left;
+    list-style-type: none;
+    padding-left: 12px;
+}
+
+.recipe-roadmap li {
+    display: inline-block;
+    padding-right:4px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.recipe-roadmap li a{
+    color: #6D6D6D;
+}
+
+.recipe-link:hover {
+    color: #121212;
+}
+
+
+.like-button {
+    color: #DD6060;
+    border: 2px solid;
+    border-color: #DD6060;
+    border-radius: 10%;
+}
+
+.like-button:hover {
+        color: #E06F6F;
+    background-color: #F3C5C5;
+}
+
+.author-of-recipe {
+    text-align:left; padding-left: 20px; padding-top: 10px;
+}
+
+.recipe-time {
+    padding: 30px 5px;
+    text-align: center;
+    border: 2px solid;
+    border-color: #929292;
+    border-radius: 3%;
+    list-style-type: none;
+}
+
+
+@media (max-width: 1400px) {
+
+    .author-of-recipe {
+        padding-left: 12px
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .author-of-recipe {
+        text-align:center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+#register-sect,
+#login-sect {
+    padding: 120px 8% 60px;
+    text-align: left;
+    background-color: #FBF5F5;
+}
+
+
+.register-container,
+.login-container {
+    font-size: 1.6rem;
+    padding: 2% 10% 3%;
+    text-align: left;
+    border:1px solid #495057;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+
+.btn-reg {
+    margin: 0 auto;
+    width: 50%;
+    border: 1.5px solid;
+    background: linear-gradient(to right, #4aa96c 50%, white 50%);
+    background-size: 220% 100%;
+    background-position: right bottom;
+    transition: all .4s ease-out;
+    color: #393E44;
+    border:1px solid #495057;
+    border-radius: 25px;
+}
+
+
+.btn-reg:hover {
+    background-position: left bottom;
+    color: #fff;
+    text-shadow: 1.5px 1.5px 4px black;
+}
+
+.btn-reg:focus {
+    outline: none;
+    box-shadow: none;
+    opacity: 1;
+    text-shadow: 1.5px 1.5px 4px black;
+}
+
+
+.already-reg,
+.already-reg:focus,
+.already-reg:hover {
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.already-reg:focus,
+.already-reg:hover{
+    color: #5B636D;
+}
+
+.enter-div {
+    text-align: right;
+    padding-top: 7px;
+}
+
+.enter-reg-div {
+    text-align: center;
+    padding-top: 9px;
+}
+
+.reg-label {
+    font-size: 21px;
+    font-weight:600;
+    margin-left: 6px;
+}
+
+.login-container, .register-container{
+    width: 80%;
+}
+
+.register-container{
+    padding-left: 11%;
+}
+
+
+@media (max-width: 1000px) {
+    .reg-label {
+        text-align: left;
+    }
+
+    .btn-reg {
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .enter-div {
+        padding-top: 25px;
+        padding-bottom: 20px;
+    }
+
+    .enter-pic {
+        display: none;
+    }
+
+}
+
+.reg-class .form-group,
+.reg-class .reg-text{
+    padding-bottom: 2%;
+    color: #3E444A;
+}
+
+
+.log-class .log-text,
+.log-class .form-group {
+    padding-bottom: 5%;
+    color: #3E444A;
+}
+
+
+.reg-class .reg-text,
+.log-class .log-text{
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.reg-class .form-control,
+.log-class .form-control {
+    line-height: 30px;
+    border-radius: 20px;
+    color: #575757;
+    outline: none;
+    box-shadow: none;
+    opacity: 1;
+    padding-left: 15px;
+    width: 95%;
+}
+
+.reg-class .form-control:focus,
+.reg-class .form-control:hover,
+.log-class .form-control:focus,
+.log-class .form-control:hover {
+    background-color: #EDEDED;
+}
+
+
+.reg-class .form-control:focus,
+.log-class .form-control:focus {
+    border: 1px solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .github-link:hover {

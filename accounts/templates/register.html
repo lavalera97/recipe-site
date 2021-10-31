@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+ <title>Регистрация</title>
+{% endblock %}
+{% block content %}
+<section id='register-sect'>
+    <div class="container register-container">
+        <form action="#" class="reg-class reg-form form-horizontal" >
+            <h1 class="reg-text mb-4">Регистрация</h1>
+            <div class="row">
+                <div class="form-group col-lg-6 mb-4">
+                    <label class="mb-2 reg-label">Имя пользователя</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group col-lg-6 mb-4">
+                    <label class="mb-2 reg-label">Email</label>
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 mb-4">
+                    <label class="mb-2 reg-label">Пароль</label>
+                    {{ form.password }}
+                </div>
+                <div class="form-group col-lg-6 mb-4">
+                    <label class="mb-2 reg-label">Повторите пароль</label>
+                    {{ form.confirm_password }}
+                </div>
+                <button type="submit" class="btn-lg mt-3 mb-4 btn-reg">Зарегестрироваться</button>
+                <div class="enter-div">
+                    <a class="already-reg effect-shine" href="#">Уже есть аккаунт? Войти <i
+                            class="fas fa-door-open"></i></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -19,17 +19,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto mb-0">
-              <a class="nav-link active nav-comp" aria-current="page" href="#"> <button class="btn btn-enter" type="button">Вход</button> </a>
-              <a class="nav-link active nav-comp" aria-current="page" href="#"> <button class="btn btn-enter" type="button">Регистрация</button> </a>
-              {% if current_user.is_authenticated %}
+              {% if request.user.is_authenticated %}
+              <div class="dropdown nav-comp" style="padding-right: 50px;">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownchoices" style="font-size: 30px; color: #505050;" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-circle"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownchoices">
+                    <li><a class="dropdown-item profile-choice" href="#">Мои рецепты</a></li>
+                    <li><a class="dropdown-item profile-choice" href="{% url 'logout' %}">Выйти</a></li>
+                  </ul>
+              </div>
                <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Мои рецепты</span></a>
-               <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Выйти</span></a>
-              {% elif current_user.is_authenticated == False %}
+               <a class="nav-link active nav-mob" aria-current="page" href="{% url 'logout' %}"><span>Выйти</span></a>
+              {% elif request.user.is_authenticated == False %}
+              <a class="nav-link active nav-comp" aria-current="page" href="#"> <button class="btn btn-enter" type="button">Вход</button> </a>
+              <a class="nav-link active nav-comp" aria-current="page" href="{% url 'register' %}"> <button class="btn btn-enter" type="button">Регистрация</button> </a>
                <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Войти</span></a>
-               <a class="nav-link active nav-mob" aria-current="page" href="#"><span>зарегестрироваться</span></a>
+               <a class="nav-link active nav-mob" aria-current="page" href="{% url 'register' %}"><span>зарегестрироваться</span></a>
               {% endif %}
-               <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Войти</span></a>
-               <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Зарегестрироваться</span></a>
+
+
                 <div class="search-mob ms-auto pb-2 pt-3">
                       <form class="d-flex search-field" method="get" action="#">
                           <input type="text" class="form-control search-text" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="basic-addon2">

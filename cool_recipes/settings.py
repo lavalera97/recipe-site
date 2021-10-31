@@ -19,6 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ROOT_DIR = environ.Path(__file__) - 2
 
+
 env = environ.Env()
 env.read_env(ROOT_DIR(".env"))
 
@@ -43,8 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'recipes',
-    'categories'
+    'categories',
+    'ingredients',
+    'accounts',
+    'django_cleanup.apps.CleanupConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -62,7 +68,9 @@ ROOT_URLCONF = 'cool_recipes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['cool_recipes/templates'],
+        'DIRS': ['cool_recipes/templates',
+                 'recipes/templates',
+                 'accounts/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cool_recipes.context_processors.show_categories'
             ],
         },
     },
@@ -135,6 +144,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
