@@ -9,9 +9,9 @@
             </a>
         </div>
           <div class="search-form">
-              <form class="d-flex search-field" method="get" action="#">
-                  <input type="text" class="form-control search-text" placeholder="Название рецепта" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                  <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+              <form class="d-flex search-field" method="get" action="{% url 'search_recipe' %}">
+                  <input type="text" class="form-control search-text" placeholder="Название рецепта" aria-label="Recipient's username" aria-describedby="basic-addon2" name="recipe_name">
+                  <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
               </form>
           </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,16 +25,16 @@
                     <i class="fas fa-user-circle"></i>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownchoices">
-                    <li><a class="dropdown-item profile-choice" href="#">Мои рецепты</a></li>
+                    <li><a class="dropdown-item profile-choice" href="{% url 'show_profile' account_name=request.user.username %}">Мои рецепты</a></li>
                     <li><a class="dropdown-item profile-choice" href="{% url 'logout' %}">Выйти</a></li>
                   </ul>
               </div>
-               <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Мои рецепты</span></a>
+               <a class="nav-link active nav-mob" aria-current="page" href="{% url 'show_profile' account_name=request.user.username %}"><span>Мои рецепты</span></a>
                <a class="nav-link active nav-mob" aria-current="page" href="{% url 'logout' %}"><span>Выйти</span></a>
               {% elif request.user.is_authenticated == False %}
-              <a class="nav-link active nav-comp" aria-current="page" href="#"> <button class="btn btn-enter" type="button">Вход</button> </a>
+              <a class="nav-link active nav-comp" aria-current="page" href="{% url 'login' %}"> <button class="btn btn-enter" type="button">Вход</button> </a>
               <a class="nav-link active nav-comp" aria-current="page" href="{% url 'register' %}"> <button class="btn btn-enter" type="button">Регистрация</button> </a>
-               <a class="nav-link active nav-mob" aria-current="page" href="#"><span>Войти</span></a>
+               <a class="nav-link active nav-mob" aria-current="page" href="{% url 'login' %}"><span>Войти</span></a>
                <a class="nav-link active nav-mob" aria-current="page" href="{% url 'register' %}"><span>зарегестрироваться</span></a>
               {% endif %}
 

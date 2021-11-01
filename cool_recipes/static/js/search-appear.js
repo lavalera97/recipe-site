@@ -12,7 +12,7 @@ $(document).ready(function () {
             if (bodyWidth <= 700) {
                 $('.search-form').css('display', 'none');
              }
-            else if ($(this).scrollTop()> 40) {
+            else if ($(this).scrollTop()> 10) {
                 $('.search-form').css('display', 'block');
              }
             else {

@@ -5,8 +5,9 @@
 {% block content %}
 <section id='register-sect'>
     <div class="container register-container">
-        <form action="#" class="reg-class reg-form form-horizontal" >
-            <h1 class="reg-text mb-4">Регистрация</h1>
+        <form action="{% url 'register' %}" method="POST" class="reg-class reg-form form-horizontal" >
+            {% csrf_token %}
+            <h1 class="reg-text">Регистрация</h1>
             <div class="row">
                 <div class="form-group col-lg-6 mb-4">
                     <label class="mb-2 reg-label">Имя пользователя</label>
@@ -26,9 +27,21 @@
                     <label class="mb-2 reg-label">Повторите пароль</label>
                     {{ form.confirm_password }}
                 </div>
-                <button type="submit" class="btn-lg mt-3 mb-4 btn-reg">Зарегестрироваться</button>
-                <div class="enter-div">
-                    <a class="already-reg effect-shine" href="#">Уже есть аккаунт? Войти <i
+                <button type="submit" class="btn-lg btn-reg">Зарегестрироваться</button>
+               <div style="font-size: 20px; color: #E41515">
+                <ul class="pt-4">
+            {% if form.email.errors %}
+                <li style="padding-bottom: 12px;">Данный email уже зарегестрирован</li>
+			{% endif %}
+            {% if form.username.errors %}
+                <li>Данный никнейм занят</li>
+			{% endif %}
+                    </ul>
+            {{ form.non_field_errors }}
+                   </div>
+
+                <div class="enter-div" style="padding-top: 0;">
+                    <a class="already-reg effect-shine" href="{% url 'login' %}">Уже есть аккаунт? Войти <i
                             class="fas fa-door-open"></i></a>
                 </div>
             </div>

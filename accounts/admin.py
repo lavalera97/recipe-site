@@ -1,6 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Account
+from recipes.models import Recipe
+
+
+class RecipeInline(admin.TabularInline):
+    model = Recipe
+    extra = 0
 
 
 @admin.register(Account)
@@ -13,3 +19,4 @@ class AccountAdmin(UserAdmin):
     filter_horizontal = ()
     list_filter = ()
     fieldsets = ()
+    inlines = [RecipeInline]

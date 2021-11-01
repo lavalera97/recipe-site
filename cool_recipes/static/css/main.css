@@ -253,15 +253,39 @@ a.effect-shine:hover * {
 
 .search-modal-element {
     padding-bottom: 25px;
-    margin: 0 20%;
     text-align: left;
+    width: 60%;
+    margin: 0 auto;
 }
+
+.add_field_button, .remove_field {
+    border: 1px solid;
+    border-color: #AFBBAF
+}
+
+@media (max-width: 600px){
+    .add-button-div {
+        padding-top: 10px;
+    }
+    .modal-content {
+        width: 80%;
+    }
+}
+
+
+.add-button-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .header-search, .search-modal-element {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #483D3D;
 }
+
 
 /* The Close Button */
 .close {
@@ -403,6 +427,7 @@ a.effect-shine:hover * {
     border-radius: 10%;
 }
 
+
 .like-button:hover {
         color: #E06F6F;
     background-color: #F3C5C5;
@@ -422,11 +447,21 @@ a.effect-shine:hover * {
 }
 
 
+.url-copy {
+    color: #DD6060;
+    padding-top: 10px;
+}
+
 @media (max-width: 1400px) {
 
     .author-of-recipe {
         padding-left: 12px
     }
+
+    .url-copy {
+    color: #DD6060;
+    padding-top: 0;
+}
 
 }
 
@@ -516,7 +551,7 @@ a.effect-shine:hover * {
     padding-top: 9px;
 }
 
-.reg-label {
+.reg-label, .log-label {
     font-size: 21px;
     font-weight:600;
     margin-left: 6px;
@@ -538,6 +573,7 @@ a.effect-shine:hover * {
 
     .btn-reg {
         margin: 0 auto;
+        font-size:15px;
         width: 80%;
     }
 
@@ -552,16 +588,30 @@ a.effect-shine:hover * {
 
 }
 
+@media (max-width: 800px) {
+    .btn-reg {
+        margin: 0 auto;
+        font-size:12px;
+        width: 80%;
+    }
+}
+
+
 .reg-class .form-group,
 .reg-class .reg-text{
-    padding-bottom: 2%;
+    padding-bottom: 20px;
     color: #3E444A;
 }
 
 
+.log-text, .reg-text{
+    margin-bottom: 0;
+    padding-bottom: 28px;
+}
+
 .log-class .log-text,
 .log-class .form-group {
-    padding-bottom: 5%;
+    padding-bottom: 30px;
     color: #3E444A;
 }
 
@@ -607,7 +657,15 @@ a.effect-shine:hover * {
 
 
 
+.li_recipe_profile {
+    font-size: 23px;
+    padding-bottom: 7px;
+    padding-left:10px;
+}
 
+.li_recipe_profile a:hover, .li_recipe_profile a:focus {
+    color: #554747
+}
 
 
 

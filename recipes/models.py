@@ -2,17 +2,18 @@ from django.db import models
 from django.shortcuts import reverse
 from categories.models import Category
 from ingredients.models import Ingredient
+from accounts.models import Account
 from ckeditor.fields import RichTextField
 
 
 class Recipe(models.Model):
-    recipe_name = models.CharField(max_length=40, verbose_name='Название рецепта')
+    recipe_name = models.CharField(max_length=60, verbose_name='Название рецепта')
     description = models.TextField(max_length=600, blank=True, verbose_name='Краткое описание рецепта')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория рецепта')
     image = models.ImageField(upload_to='images/recipes', blank=True, verbose_name='Картинка продукта')
-    prep_time = models.CharField(max_length=20, blank=True, verbose_name='Заготовка продукта')
-    cook_time = models.CharField(max_length=20, blank=True, verbose_name='Время в печи')
+    author = models.ForeignKey(Account, on_delete=models.SET_NULL, verbose_name='Автор рецепта', blank=True, null=True)
     all_time = models.CharField(max_length=20, verbose_name='Общее время для приготовления')
+    complexity = models.CharField(max_length=20, verbose_name='Сложность готовки', blank=True)
     ingredients = models.ManyToManyField(Ingredient, verbose_name='Ингредиенты продукта')
     recipe_to_cook = RichTextField(max_length=2000, verbose_name='Рецепт для готовки')
     active = models.BooleanField(default=True)

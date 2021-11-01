@@ -1,10 +1,11 @@
+{% load static %}
 <section style="padding-top: 100px; padding-bottom: 10px; background-color: #F9F7EA;">
     <div class="container">
         <div class="row align-items-start">
             <div class="col-lg-3">
-                     <form class="d-flex search-field " style="width=50%; padding-top: 5px;" method="get" action="#">
-                          <input type="text" class="form-control search-text"  placeholder="Найти рецепт">
-                          <button class="btn second-search-button" type="button"><i class="fas fa-search" style="color: #fff"></i></button>
+                     <form class="d-flex search-field " style="width=50%; padding-top: 5px;" method="get" action="{% url 'search_recipe' %}">
+                          <input type="text" class="form-control search-text"  placeholder="Найти рецепт" name="recipe_name">
+                          <button class="btn second-search-button" type="submit"><i class="fas fa-search" style="color: #fff"></i></button>
                       </form>
                 <a href="#"><p id="ingredient-search" class="ingredient-search"><strong>Искать по ингредиенту</strong></p></a>
             </div>
@@ -19,14 +20,23 @@
                     <i class="far fa-times-circle close"></i>
                 </div>
                 <div class="modal-body">
-                 <form action="#">
+                 <form action="{% url 'search_recipe' %}">
                     <div class="search-modal-element">
                         <label class="form-label">Название рецепта или его часть:</label>
-                        <input type="text" placeholder="Рецепт" class="form-control">
+                        <input type="text" placeholder="Рецепт" class="form-control" name="recipe_name">
                       </div>
                       <div class="search-modal-element">
                         <label class="form-label">Включает ингредиенты:</label>
-                        <input type="text" placeholder="Ингредиент" class="form-control">
+                          <div class="input_fields_wrap">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-10 col-sm-9">
+                                <input type="text" placeholder="Ингредиент" class="form-control" name="ingredient_name[0]">
+                                </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 add-button-div">
+                                <button class="add_field_button" type="button"><i class="fas fa-plus" style="color:#55C651"></i></button>
+                            </div>
+                            </div>
+                        </div>
                       </div>
                      <div style="padding-bottom: 15px">
                       <button class="btn second-search-button" type="submit" style="color: #fff;">Найти <i class="fas fa-search" style="padding-left: 5px;"></i></button>

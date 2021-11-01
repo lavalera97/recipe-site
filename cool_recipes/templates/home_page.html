@@ -12,13 +12,27 @@
 
 
 {% block content %}
-{% include 'choose_category.html' %}
+{% include 'includes/choose_category.html' %}
 
 <section style="padding-top: 35px; padding-bottom: 25px;">
     <div class="container">
         {% if category %}
         <h2 style="color: #494949; font-family: 'Lobster', cursive; letter-spacing:4px;">{{ category.category_name | capfirst }}</h2>
-        {% elif not category %}
+
+        {% elif ingredients and recipe_search_name %}
+        <h2 style="color: #494949; font-family: 'Lobster', cursive; letter-spacing:4px;">Рецепты</h2>
+        <h5>По названию : {{ recipe_search_name }}</h5>
+        <h5>По ингредиентам : {% for i in ingredients %}<span>"{{i}}"  </span>{% endfor %}</h5>
+
+        {% elif ingredients %}
+        <h2 style="color: #494949; font-family: 'Lobster', cursive; letter-spacing:4px;">Рецепты</h2>
+        <h5>По ингредиентам : {% for i in ingredients %}<span>"{{i}}"  </span>{% endfor %}</h5>
+
+        {% elif recipe_search_name %}
+        <h2 style="color: #494949; font-family: 'Lobster', cursive; letter-spacing:4px;">Рецепты</h2>
+        <h5>По названию {{ recipe_search_name }}</h5>
+
+        {% else %}
         <h2 style="color: #494949; font-family: 'Lobster', cursive; letter-spacing:4px;">Рецепты</h2>
         {% endif %}
 
@@ -27,12 +41,18 @@
       {% for recipe in recipes %}
       <div class="col-lg-3 col-md-6 col-sm-12 recipe-card">
           <div class="card" style="padding-left:0; padding-right: 0">
+              {% if recipe.image %}
               <a href="{{ recipe.get_url }}"><img src="{{ recipe.image.url }}" class="card-img-top" height="200" width="150"></a>
+              {% else %}
+              <a href="{{ recipe.get_url }}"><img src="{% static 'images/no-photo.png' %}" class="card-img-top" height="200" width="150"></a>
+              {% endif %}
             <div class="card-body" style="text-align: left;">
                 <a class="card-recipe-name" href="{{ recipe.get_url }}"><h4 style="color: #121212; font-weight:600;">{{ recipe.recipe_name }}</h4></a>
                 <p style="font-size: 16px; color: #494949;"> {{ recipe.description | slice:"0:110" }}... </p>
-                <span>От</span><a class="recipe-author" href="#"><strong>Админ</strong></a>
-              </div>
+                {% if recipe.author %}
+                <span>От</span><a class="recipe-author" href="{% url 'show_profile' account_name=recipe.author.username %}"><strong>{{ recipe.author.username }}</strong></a>
+                {% endif %}
+            </div>
           </div>
       </div>
       {% endfor %}
@@ -50,12 +70,15 @@
 
 {% endblock %}
 {% block extrajs %}
+
 <!-- Скрипт для работы карусели -->
 <script type="text/javascript" src="{% static 'js/categories-carousel.js' %}"></script>
 <!-- Скрипт для появления поисковой строки -->
 <script src="{% static 'js/search-appear.js' %}" type="text/javascript"></script>
-<!-- Скрипт для поиска по ингредиенту -->
+<!-- Скрипт для открытия modal по поиску по ингредиенту -->
 <script src="{% static 'js/ingredient-search.js' %}" type="text/javascript"></script>
+<!-- Скрипт для добавления новых ингредиентов -->
+<script src="{% static 'js/search-add-ingredient.js' %}" type="text/javascript"></script>
 
 <script type="text/javascript">
 
