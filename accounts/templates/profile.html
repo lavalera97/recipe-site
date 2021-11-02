@@ -11,7 +11,10 @@
         <ul style="text-align: left; padding-left: 20px;">
             {% if recipes %}
             {% for recipe in recipes %}
-            <li class="li_recipe_profile"><a href="{{ recipe.get_url }}">{{recipe.recipe_name}}</a></li>
+            <li class="li_recipe_profile"><a href="{{ recipe.get_url }}">{{recipe.recipe_name}}</a>
+                <a href="{% url 'update_recipe' recipe_id=recipe.id %}" class="change-recipe"><i class="fas fa-edit" style="color: #C8B800;"></i></a>
+                <a href="{% url 'delete_recipe' recipe_id=recipe.id %}" class="change-recipe"><i class="fas fa-minus-circle" style="color: red;"></i></a>
+            </li>
             {% endfor %}
             {% elif not recipes %}
             <li class="li_recipe_profile" style="list-style-type: none;">Пока не добавлено ни одного рецепта</li>
@@ -22,4 +25,11 @@
 
 </section>
 
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+    $('.delete-recipe').on('click', function () {
+        return confirm('Вы уверены?');
+    });
+</script>
 {% endblock %}

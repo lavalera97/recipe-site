@@ -6,6 +6,7 @@ from django.db.models import Q
 
 
 def search(ingredients, recipe_search_name):
+    """Функция для поиска по ингредиенту/названию рецепта"""
     recipes = []
     if ingredients:
         if recipe_search_name != '':
@@ -28,6 +29,7 @@ def search(ingredients, recipe_search_name):
 
 
 def home(request, category_slug=None):
+    """Функция обрабатывающая начальную страницу"""
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         recipes = Recipe.objects.filter(category=category).order_by('-updated_at')
@@ -44,6 +46,7 @@ def home(request, category_slug=None):
 
 
 def search_recipe(request):
+    """Функция которая выдает нам нужные рецепты по поиску"""
     ingredients = []
     for i in range(0, 20):
         ingredient = request.GET.get(f'ingredient_name[{i}]')

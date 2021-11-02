@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    {% if recipe_exist_name %}
+    <title>Изменить рецепт {{ recipe_exist_name }}</title>
+    {% else %}
+   <title>Создать рецепт</title>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <section style="padding-top: 100px; padding-bottom: 10px; background-color: #F6FAF4">
+        <form action="{% url 'create_recipe' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container" style="text-align:left; border: 1px solid; padding: 40px 10%; background-color: #FCFDFB;">
+                {% if recipe_exist_name %}
+                <h3 style="text-align: center; padding-bottom:25px">{{ recipe_exist_name }}</h3>
+                {% else %}
+                <h3 style="text-align: center; padding-bottom:25px">Создать рецепт</h3>
+                {% endif %}
+              <div class="create-recipe-field">
+                <label class="form-label">Название рецепта <span style="color: #D22121">*</span></label>
+                {{ recipe_form.recipe_name }}
+                <div class="form-text">Придумайте оригинальное название рецепта</div>
+              </div>
+              <div class="create-recipe-field">
+                <label class="form-label">Описание рецепта</label>
+                {{ recipe_form.description }}
+                <div class="form-text">Придумайте описание к рецепту</div>
+              </div>
+              <div class="create-recipe-field">
+                <label class="form-label">Категория <span style="color: #D22121">*</span></label>
+                {{ recipe_form.category }}
+              </div>
+              <div class="create-recipe-field">
+                <label class="form-label">Картинка</label>
+                {{ recipe_form.image }}
+              </div>
+              <div class="create-recipe-field">
+                <label class="form-label">Время на готовку <span style="color: #D22121">*</span></label>
+                {{ recipe_form.all_time }}
+              </div>
+              <div class="create-recipe-field">
+                <label class="form-label">Сложность приготовления</label>
+                {{ recipe_form.complexity }}
+              </div>
+              <div class="create-recipe-field">
+                <label class="form-label">Ингредиенты для готовки <span style="color: #D22121">*</span></label>
+                  <div class="input-fields-wrap">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 col-sm-9">
+                            <input type="text" name="ingredient_name[0]" class="form-control" maxlength="50" placeholder="Ингредиент" required>
+                        </div>
+                    <div class="col-lg-1 col-md-2 col-sm-3 add-button-div">
+                        <button class="add-field-button" type="button"><i class="fas fa-plus" style="color:#55C651"></i></button>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-text">Добавьте ингредиенты</div>
+              </div>
+
+              <div class="create-recipe-field">
+                <label class="form-label">Рецепт для готовки <span style="color: #D22121">*</span></label>
+                {{ recipe_form.recipe_to_cook }}
+                <div class="form-text">Придумайте описание к рецепту</div>
+              </div>
+                <div style="text-align:center;">
+              <button type="submit" class="btn btn-outline-success" style="margin: 0 70px; width:30%">Создать</button>
+            </div>
+            </div>
+        </form>
+    </section>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+<script src="{% static 'js/search-add-ingredient.js' %}" type="text/javascript"></script>
+
+{% endblock %}

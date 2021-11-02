@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def register(request):
+    """Функция для регистрации пользователя"""
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
@@ -32,6 +33,7 @@ def register(request):
 
 
 def login(request):
+    """Функция для входа пользователя"""
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
@@ -46,12 +48,14 @@ def login(request):
 
 @login_required(login_url='login')
 def logout(request):
+    """Функция для выхода пользователя"""
     auth.logout(request)
     url = request.META.get('HTTP_REFERER')
     return redirect(url)
 
 
 def show_profile(request, account_name):
+    """Функция для показа профиля"""
     account = get_object_or_404(Account, username=account_name)
     recipes = Recipe.objects.filter(author=account)
     print(recipes)

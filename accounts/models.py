@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class MyAccountManager(BaseUserManager):
-
+    """Настраиваем работу Account"""
     def create_user(self, username, email, password=None):
         if not email:
             raise ValueError('У пользователя должен быть email')
@@ -31,6 +31,7 @@ class MyAccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
+    """Изменяем базового User"""
     username = models.CharField(max_length=50, unique=True, verbose_name='Имя пользователя')
     email = models.EmailField(max_length=100, unique=True)
     date_joined = models.DateTimeField(auto_now_add=True, verbose_name='Дата регистрации')

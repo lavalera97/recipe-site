@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 
 
 class Recipe(models.Model):
+    """Модель для создания рецептов"""
     recipe_name = models.CharField(max_length=60, verbose_name='Название рецепта')
     description = models.TextField(max_length=600, blank=True, verbose_name='Краткое описание рецепта')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория рецепта')
@@ -21,11 +22,14 @@ class Recipe(models.Model):
     updated_at = models.DateTimeField('Время обновления записи', auto_now=True)
 
     class Meta:
+        """Изменяет имена в админ панеле"""
         verbose_name = 'Рецепт'
         verbose_name_plural = 'Рецепты'
 
     def get_url(self):
+        """Возвращает url к рецепту"""
         return reverse('show_recipe', kwargs={'recipe_id': self.id})
 
     def __str__(self):
+        """При обращении str к моделе показывает название категории"""
         return self.recipe_name

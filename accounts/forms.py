@@ -3,6 +3,7 @@ from .models import Account
 
 
 class RegistrationForm(forms.ModelForm):
+    """Форма для регистрации, берется из модели аккаунта"""
 
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Введите пароль',

@@ -26,10 +26,12 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownchoices">
                     <li><a class="dropdown-item profile-choice" href="{% url 'show_profile' account_name=request.user.username %}">Мои рецепты</a></li>
+                    <li><a class="dropdown-item profile-choice" href="{% url 'create_recipe' %}">Создать рецепт</a></li>
                     <li><a class="dropdown-item profile-choice" href="{% url 'logout' %}">Выйти</a></li>
                   </ul>
               </div>
                <a class="nav-link active nav-mob" aria-current="page" href="{% url 'show_profile' account_name=request.user.username %}"><span>Мои рецепты</span></a>
+               <a class="nav-link active nav-mob" aria-current="page" href="{% url 'create_recipe' %}"><span>Создать рецепт</span></a>
                <a class="nav-link active nav-mob" aria-current="page" href="{% url 'logout' %}"><span>Выйти</span></a>
               {% elif request.user.is_authenticated == False %}
               <a class="nav-link active nav-comp" aria-current="page" href="{% url 'login' %}"> <button class="btn btn-enter" type="button">Вход</button> </a>

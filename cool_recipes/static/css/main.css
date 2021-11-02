@@ -258,7 +258,7 @@ a.effect-shine:hover * {
     margin: 0 auto;
 }
 
-.add_field_button, .remove_field {
+.add-field-button, .remove-field {
     border: 1px solid;
     border-color: #AFBBAF
 }
@@ -648,15 +648,6 @@ a.effect-shine:hover * {
     border: 1px solid;
 }
 
-
-
-
-
-
-
-
-
-
 .li_recipe_profile {
     font-size: 23px;
     padding-bottom: 7px;
@@ -667,9 +658,22 @@ a.effect-shine:hover * {
     color: #554747
 }
 
+.change-recipe{
+    padding-left:12px;
+    font-size:18px;
+}
 
 
 
+
+.create-recipe-field {
+    margin: 0 70px 30px;
+}
+
+
+.django-ckeditor-widget{
+    width: 100%;
+}
 
 
 .github-link:hover {

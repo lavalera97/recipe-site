@@ -5,6 +5,7 @@ from ingredients.models import Ingredient
 
 @admin.register(Recipe)
 class AdminRecipe(admin.ModelAdmin):
+    """Создаёт модель для аккаунта пользователя"""
     list_display = ('recipe_name', 'category', 'active')
     ordering = ('created_at',)
     list_filter = ('category',)
@@ -13,5 +14,6 @@ class AdminRecipe(admin.ModelAdmin):
 
 
 class RecipeIngredientInline(admin.TabularInline):
+    """Показывает ингредиенты используемые в рецептах"""
     model = Ingredient
     readonly_fields =('ingredient_name',)
