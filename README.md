@@ -4,7 +4,7 @@
 
 ## Превью сайта
 <p align="center">
-<img src="https://media.giphy.com/media/ev6gjk7aF5z0eQbQiD/giphy.gif" width="85%" style="border-radius: 2%"></p>
+<img src="https://media.giphy.com/media/L568DgyPMyLyFwMLeq/giphy.gif" style="border-radius: 2%"></p>
 
 ### Инструкция по использованию
 1. Установить <strong> [Docker](https://www.docker.com/) </strong>
