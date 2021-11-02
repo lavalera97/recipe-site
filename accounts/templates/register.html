@@ -27,11 +27,11 @@
                     <label class="mb-2 reg-label">Повторите пароль</label>
                     {{ form.confirm_password }}
                 </div>
-                <button type="submit" class="btn-lg btn-reg">Зарегестрироваться</button>
+                <button type="submit" class="btn-lg btn-reg">Зарегистрироваться</button>
                 <div style="font-size: 20px; color: #E41515">
                     <ul class="pt-4">
                         {% if form.email.errors %}
-                        <li style="padding-bottom: 12px;">Данный email уже зарегестрирован</li>
+                        <li style="padding-bottom: 12px;">Данный email уже зарегистрирован</li>
                         {% endif %}
                         {% if form.username.errors %}
                         <li>Данный никнейм занят</li>
