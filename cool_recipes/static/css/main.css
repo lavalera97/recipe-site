@@ -197,8 +197,6 @@ a.effect-shine:hover * {
     color: #6D6363
 }
 
-
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -285,7 +283,6 @@ a.effect-shine:hover * {
     font-weight: 600;
     color: #483D3D;
 }
-
 
 /* The Close Button */
 .close {
@@ -381,13 +378,10 @@ a.effect-shine:hover * {
     text-underline-color: #747474
 }
 
-
-
 .recipe-card {
     padding-top: 30px;
     padding-bottom: 40px;
 }
-
 
 .card-recipe-name:hover, .recipe-author:hover {
     color: #0D0D0D;
@@ -395,8 +389,6 @@ a.effect-shine:hover * {
     text-underline-position: under;
     text-underline-color: #747474
 }
-
-
 
 .recipe-roadmap {
     text-align: left;
@@ -472,16 +464,6 @@ a.effect-shine:hover * {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 #register-sect,
 #login-sect {
     padding: 120px 8% 60px;
@@ -527,7 +509,6 @@ a.effect-shine:hover * {
     opacity: 1;
     text-shadow: 1.5px 1.5px 4px black;
 }
-
 
 .already-reg,
 .already-reg:focus,
@@ -650,8 +631,8 @@ a.effect-shine:hover * {
 
 .li_recipe_profile {
     font-size: 23px;
-    padding-bottom: 7px;
-    padding-left:10px;
+    padding-bottom: 24px;
+    padding-left: 10px;
 }
 
 .li_recipe_profile a:hover, .li_recipe_profile a:focus {
@@ -663,18 +644,13 @@ a.effect-shine:hover * {
     font-size:18px;
 }
 
-
-
-
 .create-recipe-field {
     margin: 0 70px 30px;
 }
 
-
 .django-ckeditor-widget{
     width: 100%;
 }
-
 
 .github-link:hover {
     color: #121212 !important;

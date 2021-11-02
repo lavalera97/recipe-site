@@ -58,7 +58,6 @@ def show_profile(request, account_name):
     """Функция для показа профиля"""
     account = get_object_or_404(Account, username=account_name)
     recipes = Recipe.objects.filter(author=account)
-    print(recipes)
     context = {
         'account': account,
         'recipes': recipes,

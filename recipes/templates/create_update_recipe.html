@@ -1,75 +1,121 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    {% if recipe_exist_name %}
-    <title>Изменить рецепт {{ recipe_exist_name }}</title>
-    {% else %}
-   <title>Создать рецепт</title>
-    {% endif %}
+{% if recipe_exist_name %}
+<title>Изменить рецепт {{ recipe_exist_name }}</title>
+{% else %}
+<title>Создать рецепт</title>
+{% endif %}
 {% endblock %}
 
 {% block content %}
-    <section style="padding-top: 100px; padding-bottom: 10px; background-color: #F6FAF4">
+<section style="padding-top: 100px; padding-bottom: 10px; background-color: #F6FAF4">
+    {% if recipe_exist_name %}
+    <form action="{% url 'update_recipe' recipe_id=recipe.id%}" method="POST" enctype="multipart/form-data">
+        {% else %}
         <form action="{% url 'create_recipe' %}" method="POST" enctype="multipart/form-data">
+            {% endif %}
             {% csrf_token %}
-            <div class="container" style="text-align:left; border: 1px solid; padding: 40px 10%; background-color: #FCFDFB;">
+            <div class="container"
+                 style="text-align:left; border: 1px solid; padding: 40px 10%; background-color: #FCFDFB;">
                 {% if recipe_exist_name %}
                 <h3 style="text-align: center; padding-bottom:25px">{{ recipe_exist_name }}</h3>
                 {% else %}
                 <h3 style="text-align: center; padding-bottom:25px">Создать рецепт</h3>
                 {% endif %}
-              <div class="create-recipe-field">
-                <label class="form-label">Название рецепта <span style="color: #D22121">*</span></label>
-                {{ recipe_form.recipe_name }}
-                <div class="form-text">Придумайте оригинальное название рецепта</div>
-              </div>
-              <div class="create-recipe-field">
-                <label class="form-label">Описание рецепта</label>
-                {{ recipe_form.description }}
-                <div class="form-text">Придумайте описание к рецепту</div>
-              </div>
-              <div class="create-recipe-field">
-                <label class="form-label">Категория <span style="color: #D22121">*</span></label>
-                {{ recipe_form.category }}
-              </div>
-              <div class="create-recipe-field">
-                <label class="form-label">Картинка</label>
-                {{ recipe_form.image }}
-              </div>
-              <div class="create-recipe-field">
-                <label class="form-label">Время на готовку <span style="color: #D22121">*</span></label>
-                {{ recipe_form.all_time }}
-              </div>
-              <div class="create-recipe-field">
-                <label class="form-label">Сложность приготовления</label>
-                {{ recipe_form.complexity }}
-              </div>
-              <div class="create-recipe-field">
-                <label class="form-label">Ингредиенты для готовки <span style="color: #D22121">*</span></label>
-                  <div class="input-fields-wrap">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-10 col-sm-9">
-                            <input type="text" name="ingredient_name[0]" class="form-control" maxlength="50" placeholder="Ингредиент" required>
-                        </div>
-                    <div class="col-lg-1 col-md-2 col-sm-3 add-button-div">
-                        <button class="add-field-button" type="button"><i class="fas fa-plus" style="color:#55C651"></i></button>
-                    </div>
-                    </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Название рецепта <span style="color: #D22121">*</span></label>
+                    {{ recipe_form.recipe_name }}
+                    <div class="form-text">Придумайте оригинальное название рецепта</div>
                 </div>
-                <div class="form-text">Добавьте ингредиенты</div>
-              </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Описание рецепта</label>
+                    {{ recipe_form.description }}
+                    <div class="form-text">Придумайте описание к рецепту</div>
+                </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Категория <span style="color: #D22121">*</span></label>
+                    {{ recipe_form.category }}
+                    <div class="form-text">Выберите категорию</div>
+                </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Картинка</label>
+                    {{ recipe_form.image }}
+                    <div class="form-text">Добавьте красивую картинку блюда</div>
+                </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Время на готовку <span style="color: #D22121">*</span></label>
+                    {{ recipe_form.all_time }}
+                    <div class="form-text">Общее время на готовку</div>
+                </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Сложность приготовления</label>
+                    {{ recipe_form.complexity }}
+                    <div class="form-text">Укажите сложность блюда</div>
+                </div>
+                {% if recipe_exist_name %}
+                <div class="create-recipe-field">
+                    <label class="form-label">Ингредиенты для готовки <span style="color: #D22121">*</span></label>
+                    <div class="input-fields-wrap">
+                        {% for ingredient in recipe.ingredients.all|slice:":1" %}
+                        <div class="row">
+                            <div class="col-lg-8 col-md-10 col-sm-9">
+                                <input type="text" value="{{ ingredient.ingredient_name }}" name="ingredient_name[0]"
+                                       class="form-control" maxlength="50" placeholder="Ингредиент" required>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 add-button-div">
+                                <button class="add-field-button" type="button"><i class="fas fa-plus"
+                                                                                  style="color:#55C651"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% for ingredient in recipe.ingredients.all|slice:"1:" %}
+                        <div class="row delete-row" style="padding-top: 15px;">
+                            <div class="col-lg-8 col-md-10 col-sm-9">
+                                <input type="text" value="{{ ingredient.ingredient_name }}" placeholder="Ингредиент"
+                                       class="form-control" name="ingredient_name[{{ forloop.counter }}]">
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 add-button-div">
+                                <button class="remove-field" type="button">
+                                    <i class="fas fa-minus" style="color:#D21B1B"></i>
+                                </button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-text">Добавьте ингредиенты</div>
+                </div>
+                {% elif not recipe_exist_name%}
+                <div class="create-recipe-field">
+                    <label class="form-label">Ингредиенты для готовки <span style="color: #D22121">*</span></label>
+                    <div class="input-fields-wrap">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-10 col-sm-9">
+                                <input type="text" name="ingredient_name[0]" class="form-control" maxlength="50"
+                                       placeholder="Ингредиент" required>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-3 add-button-div">
+                                <button class="add-field-button" type="button"><i class="fas fa-plus"
+                                                                                  style="color:#55C651"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-text">Добавьте ингредиенты</div>
+                </div>
+                {% endif %}
 
-              <div class="create-recipe-field">
-                <label class="form-label">Рецепт для готовки <span style="color: #D22121">*</span></label>
-                {{ recipe_form.recipe_to_cook }}
-                <div class="form-text">Придумайте описание к рецепту</div>
-              </div>
+                <div class="create-recipe-field">
+                    <label class="form-label">Рецепт для готовки <span style="color: #D22121">*</span></label>
+                    {{ recipe_form.recipe_to_cook }}
+                    <div class="form-text">Придумайте описание к рецепту</div>
+                </div>
                 <div style="text-align:center;">
-              <button type="submit" class="btn btn-outline-success" style="margin: 0 70px; width:30%">Создать</button>
-            </div>
+                    <button type="submit" class="btn btn-outline-success" style="margin: 0 70px; width:30%">Создать
+                    </button>
+                </div>
             </div>
         </form>
-    </section>
+</section>
 {% endblock %}
 
 {% block extrajs %}

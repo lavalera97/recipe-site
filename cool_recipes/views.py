@@ -48,7 +48,7 @@ def home(request, category_slug=None):
 def search_recipe(request):
     """Функция которая выдает нам нужные рецепты по поиску"""
     ingredients = []
-    for i in range(0, 20):
+    for i in range(0, 5):
         ingredient = request.GET.get(f'ingredient_name[{i}]')
         if ingredient and (ingredient not in ingredients):
             ingredients.append(ingredient.lower())
