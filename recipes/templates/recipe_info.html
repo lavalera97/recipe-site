@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-   <title>{{ recipe.recipe_name }}</title>
+<title>{{ recipe.recipe_name }}</title>
 {% endblock %}
 {% block content %}
-    <section style="padding-top: 95px; padding-bottom: 10px;">
-        <div class="container">
+<section style="padding-top: 95px; padding-bottom: 10px;">
+    <div class="container">
         <ul class="recipe-roadmap">
             <li><a class="recipe-link" href="{% url 'home' %}">Главная</a></li>
             <li><i class="fas fa-caret-right"></i></li>
@@ -13,23 +13,27 @@
             <li><i class="fas fa-caret-right"></i></li>
             <li><a class="recipe-link" href="{{ recipe.get_url }}">{{ recipe.recipe_name }}</a></li>
         </ul>
-            <h1 style="text-align: left; padding-left: 11px; padding-top: 10px; font-family: 'Secular One', sans-serif; font-weight: bold; color: #343434">{{ recipe.recipe_name }}</h1>
+        <h1 style="text-align: left; padding-left: 11px; padding-top: 10px; font-family: 'Secular One', sans-serif; font-weight: bold; color: #343434">
+            {{ recipe.recipe_name }}</h1>
 
-            <p style="text-align: left; padding-left: 11px; padding-top: 15px; width: 80%;">{{ recipe.description }}</p>
+        <p style="text-align: left; padding-left: 11px; padding-top: 15px; width: 80%;">{{ recipe.description }}</p>
 
         <div class="row justify-content-start" style="text-align:left;">
 
             <div class="col-lg-12 col-md-8 col-sm-9" style="padding-top: 10px; padding-bottom: 40px;">
                 {% if recipe.author %}
-           <div class="author-of-recipe">
-                <img src="{% static 'images/default-avatar.png'%}" width="45">
-               <span style="padding-left: 10px;">От<a class="recipe-author" href="{% url 'show_profile' account_name=recipe.author.username %}"><strong>{{ recipe.author.username }}</strong></a></span>
-            </div>
+                <div class="author-of-recipe">
+                    <img src="{% static 'images/default-avatar.png'%}" width="45">
+                    <span style="padding-left: 10px;">От<a class="recipe-author"
+                                                           href="{% url 'show_profile' account_name=recipe.author.username %}"><strong>{{ recipe.author.username }}</strong></a></span>
+                </div>
                 {% endif %}
             </div>
 
             <div class="col-lg-1 col-md-2 col-sm-2" style="text-align:center; padding-bottom: 40px;">
-                <button id="share-link" class="btn btn-lg like-button" type="button" style="padding: 3px 9px;"><i class="far fa-heart"></i><p style="margin:0;">Share</p></button>
+                <button id="share-link" class="btn btn-lg like-button" type="button" style="padding: 3px 9px;"><i
+                        class="far fa-heart"></i>
+                    <p style="margin:0;">Share</p></button>
                 <p class="url-copy"></p>
             </div>
             <div class="col-lg-5 col-md-10" style="padding-bottom: 50px;">
@@ -41,36 +45,42 @@
             </div>
             <div class="col-lg-3 col-md-10" style="padding-bottom: 30px;">
                 <ul class="recipe-time">
-                    <li style="padding-bottom: 10px"><strong style="color: #242424">Общее время готовки:</strong><span style="padding-left: 10px; padding-top: 10px">{{ recipe.all_time }}</span></li>
+                    <li style="padding-bottom: 10px"><strong style="color: #242424">Общее время готовки:</strong><span
+                            style="padding-left: 10px; padding-top: 10px">{{ recipe.all_time }}</span></li>
                     {% if recipe.complexity %}
-                    <li style="padding-bottom: 10px"><strong style="color: #242424">Сложность:</strong><span style="padding-left: 10px; padding-top: 10px">{{ recipe.complexity }}</span></li>
+                    <li style="padding-bottom: 10px"><strong style="color: #242424">Сложность:</strong><span
+                            style="padding-left: 10px; padding-top: 10px">{{ recipe.complexity }}</span></li>
                     {% endif %}
                 </ul>
             </div>
-       </div>
-            <div class="row" style="padding-bottom: 20px;">
+        </div>
+        <div class="row" style="padding-bottom: 20px;">
             <div class="col-lg-9" style="text-align: left;">
                 {% if ingredients %}
-        <ul style="list-style-type: none; padding-left: 5px; ">
-            <li style="font-weight: bold; font-family: 'Secular One', sans-serif; font-size: 22px; padding-bottom: 20px; padding-top: 10px;"><i class="fas fa-align-justify" style="padding-right: 10px"></i>Ингредиенты :</li>
-            {% for ingredient in ingredients %}
-            <li style="font-size: 17px; padding-bottom: 7px;"><i class="far fa-circle" style="padding-right: 10px"></i>{{ingredient.ingredient_name | capfirst}}</li>
-            {% endfor %}
-        </ul>
+                <ul style="list-style-type: none; padding-left: 5px; ">
+                    <li style="font-weight: bold; font-family: 'Secular One', sans-serif; font-size: 22px; padding-bottom: 20px; padding-top: 10px;">
+                        <i class="fas fa-align-justify" style="padding-right: 10px"></i>Ингредиенты :
+                    </li>
+                    {% for ingredient in ingredients %}
+                    <li style="font-size: 17px; padding-bottom: 7px;">
+                        <i class="far fa-circle" style="padding-right: 10px"></i>{{ingredient.ingredient_name | capfirst}}
+                    </li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </div>
-                </div>
-            <hr>
-            <div class="col-lg-9" style="text-align:left; padding-left: 10px; padding-bottom: 50px; padding-top: 20px">
-                <h4 style="font-family: 'Secular One', sans-serif; font-weight: bold; padding-bottom: 20px;">Рецепт приготовления</h4>
-                <p>{{ recipe.recipe_to_cook | safe }}</p>
-
-            </div>
+        </div>
+        <hr>
+        <div class="col-lg-9" style="text-align:left; padding-left: 10px; padding-bottom: 50px; padding-top: 20px">
+            <h4 style="font-family: 'Secular One', sans-serif; font-weight: bold; padding-bottom: 20px;">
+                Рецепт приготовления</h4>
+            <p>{{ recipe.recipe_to_cook | safe }}</p>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
 {% endblock %}
 
@@ -89,5 +99,6 @@
     $('.url-copy').fadeOut(2500);
     });
     });
+
 </script>
 {% endblock %}

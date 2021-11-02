@@ -1,25 +1,31 @@
 {% extends 'base.html' %}
 {% block title %}
- <title>Профиль {{ account.username }}</title>
+<title>Профиль {{ account.username }}</title>
 {% endblock %}
 
 {% block content %}
 <section style="padding-top: 110px; padding-bottom: 40px; background-color: #F3F4EC ">
     <div class="container">
-        <p style="text-align:left; font-weight:bold; font-family: 'Secular One', sans-serif; color:#3B3131; font-size:23px">Профиль: <span style="text-decoration:underline; font-weight:500">{{ account.username }}</span></p>
+        <p style="text-align:left; font-weight:bold; font-family: 'Secular One', sans-serif; color:#3B3131; font-size:23px">
+            Профиль: <span style="text-decoration:underline; font-weight:500">{{ account.username }}</span></p>
         {% if request.user == account %}
         <div style="text-align:left; padding: 20px 0 10px;">
-            <button class="btn-lg btn-outline-info"><a href="{% url 'create_recipe' %}" style="font-weight: bold;">Создать рецепт</a></button>
+            <a href="{% url 'create_recipe' %}" style="font-weight: bold;">
+                <button class="btn-lg btn-outline-info">Создать рецепт</button>
+            </a>
         </div>
         {% endif %}
-        <p style="text-align: left; font-weight: bold; font-family: 'Secular One', sans-serif; font-size: 22px; padding-top: 40px;"><i class="fas fa-align-justify" style="padding-right: 10px"></i>Рецепты :</p>
+        <p style="text-align: left; font-weight: bold; font-family: 'Secular One', sans-serif; font-size: 22px; padding-top: 40px;">
+            <i class="fas fa-align-justify" style="padding-right: 10px"></i>Рецепты :</p>
         <ul style="text-align: left; padding-left: 20px;">
             {% if recipes %}
             {% for recipe in recipes %}
-            <li class="li_recipe_profile"><a href="{{ recipe.get_url }}">{{recipe.recipe_name}}</a>
+            <li class="li_recipe_profile"><a href="{{ recipe.get_url }}"> {{recipe.recipe_name}} </a>
                 {% if request.user == account %}
-                <a href="{% url 'update_recipe' recipe_id=recipe.id %}" class="change-recipe"><i class="fas fa-edit" style="color: #FCD200;"></i></a>
-                <a href="{% url 'delete_recipe' recipe_id=recipe.id %}" class="delete-recipe change-recipe"><i class="fas fa-minus-circle" style="color: red;"></i></a>
+                <a href="{% url 'update_recipe' recipe_id=recipe.id %}" class="change-recipe"><i class="fas fa-edit"
+                                                                                                 style="color: #FCD200;"></i></a>
+                <a href="{% url 'delete_recipe' recipe_id=recipe.id %}" class="delete-recipe change-recipe"><i
+                        class="fas fa-minus-circle" style="color: red;"></i></a>
                 {% endif %}
             </li>
             {% endfor %}
@@ -38,5 +44,6 @@
     $('.delete-recipe').on('click', function () {
         return confirm('Вы уверены?');
     });
+
 </script>
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}
- <title>Регистрация</title>
+<title>Регистрация</title>
 {% endblock %}
 {% block content %}
 <section id='register-sect'>
     <div class="container register-container">
-        <form action="{% url 'register' %}" method="POST" class="reg-class reg-form form-horizontal" >
+        <form action="{% url 'register' %}" method="POST" class="reg-class reg-form form-horizontal">
             {% csrf_token %}
             <h1 class="reg-text">Регистрация</h1>
             <div class="row">
@@ -28,21 +28,22 @@
                     {{ form.confirm_password }}
                 </div>
                 <button type="submit" class="btn-lg btn-reg">Зарегестрироваться</button>
-               <div style="font-size: 20px; color: #E41515">
-                <ul class="pt-4">
-            {% if form.email.errors %}
-                <li style="padding-bottom: 12px;">Данный email уже зарегестрирован</li>
-			{% endif %}
-            {% if form.username.errors %}
-                <li>Данный никнейм занят</li>
-			{% endif %}
+                <div style="font-size: 20px; color: #E41515">
+                    <ul class="pt-4">
+                        {% if form.email.errors %}
+                        <li style="padding-bottom: 12px;">Данный email уже зарегестрирован</li>
+                        {% endif %}
+                        {% if form.username.errors %}
+                        <li>Данный никнейм занят</li>
+                        {% endif %}
                     </ul>
-            {{ form.non_field_errors }}
-                   </div>
+                    {{ form.non_field_errors }}
+                </div>
 
                 <div class="enter-div" style="padding-top: 0;">
-                    <a class="already-reg effect-shine" href="{% url 'login' %}">Уже есть аккаунт? Войти <i
-                            class="fas fa-door-open"></i></a>
+                    <a class="already-reg effect-shine" href="{% url 'login' %}">
+                        Уже есть аккаунт? Войти <i class="fas fa-door-open"></i>
+                    </a>
                 </div>
             </div>
         </form>
