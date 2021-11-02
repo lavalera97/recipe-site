@@ -35,6 +35,7 @@ DEBUG = env.bool("DEBUG", False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 
+ENABLE_SSL = env.bool("ENABLE_SSL", False)
 
 # Application definition
 
@@ -92,10 +93,7 @@ WSGI_APPLICATION = 'cool_recipes.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(),
 }
 
 
@@ -145,12 +143,16 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Наша кастомная модель пользователя, используемая вместо User
 AUTH_USER_MODEL = 'accounts.Account'
+
+# Конфигурация оповещений
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
+# Конфигурация CKeditor
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
@@ -165,6 +167,10 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# Указываем папку для наших fixture
+FIXTURE_DIRS = [
+    'cool_recipes/fixtures',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
