@@ -4,7 +4,7 @@
 
 ## Превью сайта
 <p align="center">
-<img src="https://media.giphy.com/media/L568DgyPMyLyFwMLeq/giphy.gif" style="border-radius: 2%"></p>
+<img src="https://media.giphy.com/media/L568DgyPMyLyFwMLeq/giphy.gif" width="95%" style="border-radius: 2%; max-width:100%;"></p>
 
 ### Инструкция по использованию
 1. Установить <strong> [Docker](https://www.docker.com/) </strong>
@@ -42,5 +42,19 @@ python manage.py loaddata account ingredient category recipe
 
 8. Заходим на сайт по url:
 > http://127.0.0.1:8000/
+
+###Возможности сайта
+
+* <strong>Авторизация пользователя</strong>
+<img src="https://media.giphy.com/media/XO2OIrxGK7fxwLSJOk/giphy.gif" width="95%" style="border-radius: 2%; max-width:100%; padding-top:30px; padding-bottom: 20px"></p>
+  
+* <strong>Поиск по названию рецепта и ингредиентам</strong>
+<img src="https://media.giphy.com/media/iWpxjbSYhGi692PSWF/giphy.gif" width="95%" style="border-radius: 2%; max-width:100%; padding-top:30px; padding-bottom: 20px"></p>
+
+* <strong>Создание рецепта</strong> 
+<img src="https://media.giphy.com/media/imL7HdWRJLmj8LMme0/giphy.gif" width="95%" style="border-radius: 2%; max-width:100%; padding-top:30px; padding-bottom: 20px"></p>
+
+* Изменение уже существующего рецепта
+<img src="https://media.giphy.com/media/mDVsqn5w3XdLiqzE8Q/giphy.gif" width="95%" style="border-radius: 2%; max-width:100%; padding-top:30px; padding-bottom: 20px"></p>
 
 
