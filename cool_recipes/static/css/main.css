@@ -1,3 +1,5 @@
+/* Общие настройки стиля */
+
 body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
@@ -10,7 +12,6 @@ a:visited, a:active, a:hover, a:link {
        text-decoration: none;
 }
 
-
 h1,
 h2,
 h3,
@@ -19,6 +20,8 @@ h5,
 h6 {
     font-family: 'Crete Round', serif;
 }
+
+/* Настройка стиля navbar */
 
 .navbar-brand {
     font-size: 25px;
@@ -172,9 +175,12 @@ a.effect-shine:hover * {
     }
 }
 
+/* Настройка стиля для выбора категорий */
+
 .search-field *{
     border-radius: 0
 }
+
 .second-search-button {
     background-color: #F49696;
 }
@@ -197,7 +203,8 @@ a.effect-shine:hover * {
     color: #6D6363
 }
 
-/* The Modal (background) */
+/* Настройка стиля для высплывающего окна поиска по названию рецепта и ингредиентам */
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -212,7 +219,6 @@ a.effect-shine:hover * {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -226,7 +232,6 @@ a.effect-shine:hover * {
   animation-duration: 0.4s
 }
 
-/* Add Animation */
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0}
   to {top:0; opacity:1}
@@ -270,13 +275,11 @@ a.effect-shine:hover * {
     }
 }
 
-
 .add-button-div {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 
 .header-search, .search-modal-element {
     font-family: 'Montserrat', sans-serif;
@@ -284,7 +287,6 @@ a.effect-shine:hover * {
     color: #483D3D;
 }
 
-/* The Close Button */
 .close {
   color: #8E7B7B;
   font-size: 20px;
@@ -297,6 +299,8 @@ a.effect-shine:hover * {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Настройка стиля переключения между категориями */
 
 .MultiCarousel {
     float: left;
@@ -359,6 +363,9 @@ a.effect-shine:hover * {
     margin-right: 8px;
 }
 
+.category-link:hover {
+       color: #0D0D0D;
+}
 
 @media (max-width: 1000px) {
 
@@ -368,9 +375,7 @@ a.effect-shine:hover * {
     }
 }
 
-.category-link:hover {
-       color: #0D0D0D;
-}
+/* Настройка стиля главной страницы рецептов */
 
 .recipe-author {
     padding-left: 6px;
@@ -389,6 +394,8 @@ a.effect-shine:hover * {
     text-underline-position: under;
     text-underline-color: #747474
 }
+
+/* Настройка стиля выбранного рецепта */
 
 .recipe-roadmap {
     text-align: left;
@@ -411,14 +418,12 @@ a.effect-shine:hover * {
     color: #121212;
 }
 
-
 .like-button {
     color: #DD6060;
     border: 2px solid;
     border-color: #DD6060;
     border-radius: 10%;
 }
-
 
 .like-button:hover {
         color: #E06F6F;
@@ -437,7 +442,6 @@ a.effect-shine:hover * {
     border-radius: 3%;
     list-style-type: none;
 }
-
 
 .url-copy {
     color: #DD6060;
@@ -464,13 +468,14 @@ a.effect-shine:hover * {
     }
 }
 
+/* Настройка стиля страниц регистрации и авторизации */
+
 #register-sect,
 #login-sect {
     padding: 120px 8% 60px;
     text-align: left;
     background-color: #FBF5F5;
 }
-
 
 .register-container,
 .login-container {
@@ -481,7 +486,6 @@ a.effect-shine:hover * {
     background-color: #fff;
     border-radius: 25px;
 }
-
 
 .btn-reg {
     margin: 0 auto;
@@ -495,7 +499,6 @@ a.effect-shine:hover * {
     border:1px solid #495057;
     border-radius: 25px;
 }
-
 
 .btn-reg:hover {
     background-position: left bottom;
@@ -545,7 +548,6 @@ a.effect-shine:hover * {
 .register-container{
     padding-left: 11%;
 }
-
 
 @media (max-width: 1000px) {
     .reg-label {
@@ -623,11 +625,12 @@ a.effect-shine:hover * {
     background-color: #EDEDED;
 }
 
-
 .reg-class .form-control:focus,
 .log-class .form-control:focus {
     border: 1px solid;
 }
+
+/* Настройка профиля пользователя */
 
 .li_recipe_profile {
     font-size: 23px;
@@ -648,9 +651,7 @@ a.effect-shine:hover * {
     margin: 0 70px 30px;
 }
 
-.django-ckeditor-widget{
-    width: 100%;
-}
+/* Настройка стиля footer */
 
 .github-link:hover {
     color: #121212 !important;
@@ -658,4 +659,8 @@ a.effect-shine:hover * {
 
 .telegram-link:hover {
     color: #6489C4 !important;
+}
+
+.django-ckeditor-widget{
+    width: 100%;
 }

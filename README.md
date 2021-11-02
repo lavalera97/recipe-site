@@ -50,7 +50,7 @@ python manage.py loaddata account ingredient category recipe
 9. Заходим на сайт по url:
 > http://127.0.0.1:8000/
 
-###Возможности сайта
+### Возможности сайта
 
 * <strong>Авторизация пользователя</strong>
 
